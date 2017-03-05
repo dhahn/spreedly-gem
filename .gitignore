@@ -7,3 +7,4 @@ tmp
 vendor/ruby
 test/credentials/personal_credentials.yml
 .ruby-version
+*.swp

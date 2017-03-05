@@ -7,8 +7,12 @@ module Spreedly
 
     def initialize_fields(xml_doc)
       self.class.fields.each do |field|
-        value = xml_doc.at_xpath(".//#{field}").inner_html.strip
-        instance_variable_set("@#{field}", value)
+        field_xml = xml_doc.at_xpath(".//#{field}")
+          
+        if field_xml
+          value = field_xml.inner_html.strip
+          instance_variable_set("@#{field}", value)
+        end
       end
     end
 
