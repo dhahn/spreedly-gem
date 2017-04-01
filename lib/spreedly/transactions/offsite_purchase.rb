@@ -6,8 +6,7 @@ module Spreedly
 
     def initialize(xml_doc)
       super
-      response_xml_doc = xml_doc.at_xpath('.//setup_response')
-      @response = response_xml_doc ? SetupResponse.new(response_xml_doc) : nil
+      @response = SetupResponse.new(xml_doc)
     end
 
     def pending?
@@ -22,6 +21,14 @@ module Spreedly
     field :success, type: :boolean
     field :created_at, :updated_at, type: :date_time
     field :message, :error_code, :checkout_url
+    field :first_name, :last_name
+    field :payer
+    field :street1
+    field :city_name
+    field :state_or_province
+    field :postal_code
+    field :country
+    
 
     def initialize(xml_doc)
       initialize_fields(xml_doc)
